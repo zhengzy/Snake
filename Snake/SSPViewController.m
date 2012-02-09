@@ -115,12 +115,10 @@
     
     [self initSnake];
     
-//    NSTimer *timer = [[NSTimer alloc] initWithFireDate:[NSDate date] interval:1 target:self selector:@selector(tick) userInfo:nil repeats:YES];
-//    [timer fire];
     if (timer) {
         [timer invalidate];
     }
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(tick) userInfo:nil repeats:YES];
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(tick) userInfo:nil repeats:YES];
 }
 
 #pragma mark - View lifecycle
@@ -139,17 +137,30 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (IBAction)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
+    UISwipeGestureRecognizerDirection direction = recognizer.direction;
+    
+    if (direction == UISwipeGestureRecognizerDirectionUp) {
+        [[StateMap sharedInstance] changeDirection:0];
+    } else if (direction == UISwipeGestureRecognizerDirectionDown) {
+        [[StateMap sharedInstance] changeDirection:1];
+    } else if (direction == UISwipeGestureRecognizerDirectionLeft) {
+        [[StateMap sharedInstance] changeDirection:2];
+    } else if (direction == UISwipeGestureRecognizerDirectionRight) {
+        [[StateMap sharedInstance] changeDirection:3];
+    }
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)];
+    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
     backgroundView.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:backgroundView];
-    
-//    UIGestureRecognizer *gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGesture:)];
-    
+
 }
+
 
 - (void)viewDidAppear:(BOOL)animated
 {

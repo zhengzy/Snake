@@ -75,8 +75,35 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Lh0-yn-gBg" appends="YES" id="gp2-0Y-6rL"/>
+                            <outletCollection property="gestureRecognizers" destination="oPf-Sx-Cw7" appends="YES" id="GYv-ED-wXJ"/>
+                            <outletCollection property="gestureRecognizers" destination="7ot-ng-Vyf" appends="YES" id="gX4-31-YaK"/>
+                            <outletCollection property="gestureRecognizers" destination="EpU-JW-Sv0" appends="YES" id="whR-by-rve"/>
+                        </connections>
                     </view>
                 </viewController>
+                <swipeGestureRecognizer direction="up" id="Lh0-yn-gBg">
+                    <connections>
+                        <action selector="handleSwipeFrom:" destination="2" id="2kk-NA-Zh3"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="down" id="oPf-Sx-Cw7">
+                    <connections>
+                        <action selector="handleSwipeFrom:" destination="2" id="9SQ-H2-Szp"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="7ot-ng-Vyf">
+                    <connections>
+                        <action selector="handleSwipeFrom:" destination="2" id="Jdc-rK-Nxp"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="EpU-JW-Sv0">
+                    <connections>
+                        <action selector="handleSwipeFrom:" destination="2" id="od8-Bo-3wR"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
         </scene>
     </scenes>

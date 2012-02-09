@@ -42,8 +42,8 @@
 
 @end
 
-#define MAP_WIDTH 32
-#define MAP_HEIGHT 32
+#define MAP_WIDTH 16
+#define MAP_HEIGHT 23
 
 int directionArray[2][2] = {{-1, 1},{-1, 1}};
 
@@ -81,11 +81,23 @@ static StateMap *instance = nil;
 
 - (int)getSideLength
 {
-    return 10;
+    return 20;
 }
 
 - (void)changeDirection:(int)dire
 {
+    if (direction == 0 || direction == 2) {
+        if (dire - direction == 1) {
+            return;
+        }
+    }
+    
+    if (direction == 1 || direction == 3) {
+        if (dire - direction == -1) {
+            return;
+        }
+    }
+    
     direction = dire;
 }
 
@@ -141,7 +153,7 @@ static StateMap *instance = nil;
         headPoint.x += directionArray[direction / 2][direction % 2];
     }
     
-    NSLog(@"headPoint x = %d y = %d", headPoint.x, headPoint.y);
+//    NSLog(@"headPoint x = %d y = %d", headPoint.x, headPoint.y);
     
     if (![self isPointAvailable:headPoint]) {
         [self.delegate gameOver];

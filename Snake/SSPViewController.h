@@ -18,5 +18,6 @@
 @property (nonatomic, strong) UIView *cherryCube;
 
 - (IBAction)directionAction:(id)sender;
+- (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer;
 
 @end
